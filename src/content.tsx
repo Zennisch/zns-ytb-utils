@@ -110,8 +110,10 @@ export const downloadYoutubeTranscript = () => {
 
 const PlasmoOverlay = () => {
     return (
-        <div className="plasmo-z-50 plasmo-flex plasmo-fixed plasmo-top-32 plasmo-right-8">
-            <DownloadTranscriptButton />
+        <div className="z-50 fixed top-24 right-6 flex flex-col gap-2">
+            <div className="backdrop-blur-sm bg-white/90 p-1 rounded-lg shadow-lg border border-gray-200">
+                <DownloadTranscriptButton />
+            </div>
         </div>
     )
 }

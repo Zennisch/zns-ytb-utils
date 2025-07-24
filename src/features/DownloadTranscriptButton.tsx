@@ -8,8 +8,21 @@ export const DownloadTranscriptButton = () => {
                 invoke(downloadYoutubeTranscript)
             }}
             type="button"
-            className="plasmo-flex plasmo-flex-row plasmo-items-center plasmo-px-4 plasmo-py-2 plasmo-text-sm plasmo-rounded-lg plasmo-transition-all plasmo-border-none plasmo-shadow-lg hover:plasmo-shadow-md active:plasmo-scale-105 plasmo-bg-slate-50 hover:plasmo-bg-slate-100 plasmo-text-slate-800 hover:plasmo-text-slate-900">
-            <span className="plasmo-mr-2">Download Transcript</span>
+            className="flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-lg 
+                       transition-all duration-200 shadow-md hover:shadow-lg 
+                       bg-white hover:bg-gray-50 
+                       text-gray-800 hover:text-black
+                       border border-gray-200
+                       active:transform active:scale-[1.02]">
+            <svg 
+                className="w-4 h-4 mr-2" 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Transcript
         </button>
     )
 }
