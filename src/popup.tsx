@@ -12,7 +12,7 @@ function IndexPopup() {
         getOverlayEnabled().then(setOverlayEnabledState)
     }, [])
     
-    const handleToggle = async (value) => {
+    const handleToggle = async (value: boolean) => {
         await setOverlayEnabled(value)
         setOverlayEnabledState(value)
     }
