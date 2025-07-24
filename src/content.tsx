@@ -1,5 +1,7 @@
 import cssText from "data-text:~style.css"
 import type { PlasmoCSConfig } from "plasmo"
+import { useEffect, useState } from "react"
+import { getOverlayEnabled } from "~configs/Storage"
 
 import { DownloadTranscriptButton } from "~features/DownloadTranscriptButton"
 
@@ -109,6 +111,27 @@ export const downloadYoutubeTranscript = () => {
 }
 
 const PlasmoOverlay = () => {
+    const [overlayEnabled, setOverlayEnabled] = useState(false)
+
+    useEffect(() => {
+        getOverlayEnabled().then(setOverlayEnabled)
+
+        const listener = (changes) => {
+            if (changes.overlayEnabled) {
+                setOverlayEnabled(changes.overlayEnabled.newValue)
+            }
+        }
+
+        chrome.storage.onChanged.addListener(listener)
+        return () => {
+            chrome.storage.onChanged.removeListener(listener)
+        }
+    }, [])
+
+    if (!overlayEnabled) {
+        return null
+    }
+
     return (
         <div className="z-50 fixed top-24 right-6 flex flex-col gap-2">
             <div className="backdrop-blur-sm bg-white/90 p-1 rounded-lg shadow-lg border border-gray-200">
