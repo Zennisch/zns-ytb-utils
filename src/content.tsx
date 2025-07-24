@@ -73,6 +73,9 @@ export const downloadYoutubeTranscript = () => {
             text = Array.from(segments)
                 .map((el: HTMLElement) => el.textContent.trim())
                 .join("\n")
+
+            text = text.replace(/([^.?!\n])\n([a-z])/g, "$1 $2")
+            text = text.replaceAll("\n", "\n\n")
         } catch (error) {
             alert("Transcript segments not found or inaccessible")
             return
