@@ -26,14 +26,14 @@ function IndexPopup() {
                 <DownloadTranscriptButton />
             </div>
 
-            <div className="flex justify-center py-2 border-t border-gray-100">
+            <div className="flex justify-center py-4 border-t border-gray-100">
                 <ToggleSwitch
                     enabled={overlayEnabled}
                     onChange={handleToggle}
                 />
             </div>
 
-            <div className="mt-3 text-center">
+            <div className="text-center">
                 <span className="text-xs text-gray-500">
                     Works on YouTube video pages
                 </span>
