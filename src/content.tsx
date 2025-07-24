@@ -1,10 +1,11 @@
 import cssText from "data-text:~style.css"
 import type { PlasmoCSConfig } from "plasmo"
+import { useEffect } from "react"
 
 import { CountButton } from "~features/count-button"
 
 export const config: PlasmoCSConfig = {
-  matches: ["<all_urls>"]
+    matches: ["<all_urls>"]
 }
 
 /**
@@ -20,29 +21,38 @@ export const config: PlasmoCSConfig = {
  *    regardless of the host page's font size.
  */
 export const getStyle = (): HTMLStyleElement => {
-  const baseFontSize = 16
+    const baseFontSize = 16
 
-  let updatedCssText = cssText.replaceAll(":root", ":host(plasmo-csui)")
-  const remRegex = /([\d.]+)rem/g
-  updatedCssText = updatedCssText.replace(remRegex, (match, remValue) => {
-    const pixelsValue = parseFloat(remValue) * baseFontSize
+    let updatedCssText = cssText.replaceAll(":root", ":host(plasmo-csui)")
+    const remRegex = /([\d.]+)rem/g
+    updatedCssText = updatedCssText.replace(remRegex, (match, remValue) => {
+        const pixelsValue = parseFloat(remValue) * baseFontSize
 
-    return `${pixelsValue}px`
-  })
+        return `${pixelsValue}px`
+    })
 
-  const styleElement = document.createElement("style")
+    const styleElement = document.createElement("style")
 
-  styleElement.textContent = updatedCssText
+    styleElement.textContent = updatedCssText
 
-  return styleElement
+    return styleElement
+}
+
+export const logTitle = () => {
+    console.log(`Document Title: ${document.title}`)
+}
+
+export const changeTitle = (newTitle: string) => {
+    document.title = newTitle
+    console.log(`Document Title changed to: ${document.title}`)
 }
 
 const PlasmoOverlay = () => {
-  return (
-    <div className="plasmo-z-50 plasmo-flex plasmo-fixed plasmo-top-32 plasmo-right-8">
-      <CountButton />
-    </div>
-  )
+    return (
+        <div className="plasmo-z-50 plasmo-flex plasmo-fixed plasmo-top-32 plasmo-right-8">
+            <CountButton />
+        </div>
+    )
 }
 
 export default PlasmoOverlay
