@@ -1,7 +1,7 @@
 import { downloadYoutubeTranscript } from "~content"
 import { invoke } from "~middlewares/ScriptInvoker"
 
-export const CountButton = () => {
+export const DownloadTranscriptButton = () => {
     return (
         <button
             onClick={() => {
