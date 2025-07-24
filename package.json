@@ -1,6 +1,6 @@
 {
     "name": "zns-ytb-utils",
-    "displayName": "Zns ytb utils",
+    "displayName": "Zennisch's Youtube Utils Extension",
     "version": "0.0.1",
     "description": "A Youtube Utils Extension",
     "author": "Zennisch - zennisch@gmail.com",
@@ -32,7 +32,7 @@
             "storage"
         ],
         "host_permissions": [
-            "https://*/*"
+            "https://www.youtube.com/*"
         ]
     }
 }

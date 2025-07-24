@@ -1,12 +1,12 @@
 import cssText from "data-text:~style.css"
 import type { PlasmoCSConfig } from "plasmo"
 import { useEffect, useState } from "react"
-import { getOverlayEnabled } from "~configs/Storage"
 
+import { getOverlayEnabled } from "~configs/Storage"
 import { DownloadTranscriptButton } from "~features/DownloadTranscriptButton"
 
 export const config: PlasmoCSConfig = {
-    matches: ["<all_urls>"]
+    matches: ["https://www.youtube.com/watch*"]
 }
 
 export const getStyle = (): HTMLStyleElement => {
@@ -27,21 +27,10 @@ export const getStyle = (): HTMLStyleElement => {
     return styleElement
 }
 
-export const logTitle = () => {
-    console.log(`Document Title: ${document.title}`)
-}
-
-export const changeTitle = (newTitle: string) => {
-    document.title = newTitle
-    console.log(`Document Title changed to: ${document.title}`)
-}
-
 export const downloadYoutubeTranscript = () => {
     const href = window.location.href
-    console.log(`Current URL: ${href}`)
 
     if (!href.includes("youtube.com/watch")) {
-        console.error("Not a YouTube video page")
         alert("Not a YouTube video page")
         return
     }
@@ -62,13 +51,7 @@ export const downloadYoutubeTranscript = () => {
             "div.yt-spec-touch-feedback-shape__fill"
         )
         button = buttonShape[0] as HTMLElement
-
-        console.log("Extra Content:", extraContent)
-        console.log("Button Renderer:", buttonRenderer)
-        console.log("Button Shape:", buttonShape)
-        console.log("Button Element:", button)
     } catch (error) {
-        console.error("Error accessing YouTube transcript section: ", error)
         alert("YouTube transcript section not found or inaccessible")
         return
     }
@@ -76,7 +59,6 @@ export const downloadYoutubeTranscript = () => {
     if (button) {
         button.click()
     } else {
-        console.error("Transcript button not found")
         alert("Transcript button not found")
         return
     }
@@ -92,10 +74,6 @@ export const downloadYoutubeTranscript = () => {
                 .map((el: HTMLElement) => el.textContent.trim())
                 .join("\n")
         } catch (error) {
-            console.error(
-                "Transcript segments not found or inaccessible: ",
-                error
-            )
             alert("Transcript segments not found or inaccessible")
             return
         }
